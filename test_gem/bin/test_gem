@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+
+require 'test_gem' 
+
+puts "test_gem script executing"
+puts ARGV[0]
+# puts TestGem::MyFile::first( ARGV[0] )
+if ARGV.length == 0 
+  TestGem::configure
+else
+  if ARGV[0] == "--init"
+    puts "got the command line parameter --init" 
+    TestGem::init_config
+  else
+    puts "got the parameter #{ ARGV[0] }" 
+  end
+end
+
